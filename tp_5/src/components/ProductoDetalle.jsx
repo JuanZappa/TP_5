@@ -6,6 +6,7 @@ import ProductoStock from "./ProductoStock";
 import BotonCompra from "./BotonCompra";
 import CantidadSelector from "./CantidadSelector";
 import "./../styles/ProductoDetalle.css";
+import{ getProductById } from '../services/products'
 
 const ProductoDetalle = () => {
   const { id } = useParams();
@@ -18,9 +19,13 @@ const ProductoDetalle = () => {
   useEffect(() => {
     const cargarProducto = async () => {
       try {
-        const response = await fetch("/productos.json");
-        const data = await response.json();
-        const prod = data.find((p) => p.id.toString() === id);
+        //const response = await fetch("/productos.json");
+
+        //const data = await response.json();
+        //const prod = data.find((p) => p.id.toString() === id);
+
+        const prod = await getProductById({ product_id: id });
+
         if (prod) {
           setProducto(prod);
           setStock(prod.cantidadDisponible);

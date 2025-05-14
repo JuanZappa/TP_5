@@ -11,7 +11,6 @@ function App() {
         <Route path="/register" element={<Register />} />
         <Route path="/productos" element={<ProductosLista />} />
         <Route path="/productos/:id" element={<ProductoDetalle />} />
-        <Route path="/detalle/:id" element={<ProductoDetalle />} />
       </Routes>
   );
 }

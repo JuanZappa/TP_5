@@ -1,6 +1,7 @@
 import { useEffect, useState } from "react";
 import { Link } from "react-router-dom";
 import "../styles/ProductosLista.css"; // Asegúrate de importar el archivo CSS
+import{getProducts} from '../services/products'
 
 const ProductosLista = () => {
   const [productos, setProductos] = useState([]);
@@ -8,8 +9,10 @@ const ProductosLista = () => {
   useEffect(() => {
     const cargarProductos = async () => {
       try {
-        const response = await fetch("/productos.json");
-        const data = await response.json();
+        //const response = await fetch("/productos.json");
+        const response = await getProducts( )
+        const data = await response;
+        console.log("data:", data)
         setProductos(data);
       } catch (error) {
         console.error("Error cargando productos:", error);
